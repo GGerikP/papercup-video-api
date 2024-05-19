@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Video {
+  id              Int          @id @default(autoincrement())
+  uuid            String       @unique @default(uuid())
+  url             String       @unique
+  description     String?
+  lengthMilliSecs Int
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @default(now())
+  annotations     Annotation[]
+}
+
+model Annotation {
+  id                 Int      @id @default(autoincrement())
+  uuid               String   @unique @default(uuid())
+  startTimeMilliSecs Int
+  endTimeMilliSecs   Int?
+  videoId            Int
+  type               String?
+  additionalNotes    String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @default(now())
+  video              Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
+}
+
+model APIKey {
+  id        String   @id
+  keyHash   String
+  createdAt DateTime @default(now())
+}

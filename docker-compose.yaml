@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./prisma:/usr/src/app/prisma
+    environment:
+      - NODE_ENV=docker
+      - DB_PATH=/usr/src/app/prisma/dev.db  # Set the DB path environment variable if needed
+    env_file:
+      - ./.env.docker
+    restart: always
+
+  # For when this database is moved to something more stable and extensible
+  # db:
+  #   image: busybox
+  #   container_name: db_data
+  #   volumes:
+  #     - sqlite_data:/usr/src/app/prisma
+
+
+volumes:
+  sqlite_data:
