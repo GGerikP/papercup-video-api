@@ -143,6 +143,6 @@ Authorization: APIKey-V1 <key value>
 
 Author: Gerik Peterson
 
-Email: Gerik@GerikPeterson.com
+Email: Gerik@GerikPeterson.com / GGerikP1@Gmail.com
 
 License: MIT
