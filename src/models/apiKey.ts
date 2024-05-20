@@ -2,7 +2,7 @@ import { PrismaClient, APIKey } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import { randomUUID, randomBytes, CipherGCMTypes } from 'crypto';
 import config from '../config';
-import { decrypt, encrypt } from '../utils/encryption';
+import { encrypt } from '../utils/encryption';
 
 // We don't want these changing after we've encrypted and stored values
 

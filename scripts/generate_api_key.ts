@@ -4,7 +4,6 @@ import { APIKeyStoreObj, generateAPIKey, storeAPIKey } from '../src/models/apiKe
 
 const prisma = new PrismaClient();
 
-
 generateAPIKey().then((apiKeyResponse) => {
     const apiKeyStoreObj: APIKeyStoreObj = {
         apiKeyId: apiKeyResponse.id,
